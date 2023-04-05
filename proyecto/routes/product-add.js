@@ -1,9 +1,9 @@
 let express =require('express');
 let router = express.Router();
-let productAddController = require('../controllers/productController')
+let productController = require('../controllers/productController')
 
 //rutas.
-router.get('/', productAddController.index);
+router.get('/',productController.Add);
 
 
 
