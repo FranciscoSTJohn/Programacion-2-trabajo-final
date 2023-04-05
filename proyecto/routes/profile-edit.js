@@ -1,5 +1,10 @@
-var express = require('express');
-var router = express.Router();
+let express =require('express');
+let router = express.Router();
+let profileEditController = require('../controllers/profileController')
+
+//rutas.
+router.get('/', profileEditController.index);
 
 
-module.exports = router; 
+
+module.exports = router;

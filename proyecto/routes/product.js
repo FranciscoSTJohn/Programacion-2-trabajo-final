@@ -1,9 +1,10 @@
-var express = require('express');
-var router = express.Router();
+let express =require('express');
+let router = express.Router();
+let productController = require('../controllers/productController')
+
+//rutas.
+router.get('/', productController.index);
 
 
-router.get('/', function (req, res) {
-   res.render('product', {}) 
-})
 
-module.exports = router; 
+module.exports = router;

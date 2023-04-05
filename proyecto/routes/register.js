@@ -1,5 +1,10 @@
-var express = require('express');
-var router = express.Router();
+let express =require('express');
+let router = express.Router();
+let registerController = require('../controllers/registerController')
+
+//rutas.
+router.get('/', registerController.index);
 
 
-module.exports = router; 
+
+module.exports = router;
