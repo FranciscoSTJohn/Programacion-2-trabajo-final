@@ -62,4 +62,9 @@ let  = {
             descripcion: '',
             id: 10,
         }
-          ]}
+          ],
+      comentarios:[{
+            nombre_usuario_comentario:'',
+            texto_comentario: '',
+            imagen_usuario_comentario,
+      }]}
