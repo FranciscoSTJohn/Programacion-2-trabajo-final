@@ -9,30 +9,30 @@ let  = {
         productos: [ 
 
         {
-          nombre: '' ,
-          imagen: '',
+          nombre: 'Rolex Oyster Perpetual Cosmograph Daytona' ,
+          imagen: '' ,
           descripcion: '',
           id: 1,
           
         },
         
         {
-            nombre: '' ,
+            nombre: 'Rolex Perpetual 1908' ,
             imagen: '',
             descripcion: '',
             id: 2,
       },{
-            nombre: '' ,
+            nombre: 'Oyster Perpetual Yacht Master 42' ,
             imagen: '',
             descripcion: '',
             id: 3,
       },{
-            nombre: '' ,
+            nombre: 'GMT Master II' ,
             imagen: '',
             descripcion: '',
             id: 4,
       },{
-            nombre: '' ,
+            nombre: 'Oyster Perpetual Day Date 36' ,
             imagen: '',
             descripcion: '',
             id: 5,
