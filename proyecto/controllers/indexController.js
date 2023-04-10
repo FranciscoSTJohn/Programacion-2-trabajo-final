@@ -2,7 +2,10 @@ let data = require('../data/index')
 
 let indexController = {
     index: function(req, res){
-        return res.render('index', {})
+        let usuario = data.usuario
+        let productos = data.productos
+
+        return res.render('index', {productos: productos})
     },
 
 }
