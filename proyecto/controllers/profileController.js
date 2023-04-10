@@ -1,9 +1,12 @@
+let data = require('../data/index')
 let profileController = {
     index: function(req, res){
-        return res.render('profile', {})
+        let usuario = data.usuario
+        return res.render('profile', {usuario: usuario})
     },
     Edit: function(req, res){
-        return res.render('profile-edit',{})
+        let usuario = data.usuario
+        return res.render('profile-edit',{usuario: usuario})
     },
 }
 module.exports = profileController
