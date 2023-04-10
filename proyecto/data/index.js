@@ -70,7 +70,7 @@ let  = {
             id_comentario: 1,
       },{
             nombre_usuario_comentario:'Kingsslayer3000',
-            texto_comentario: 'muy caro',
+            texto_comentario: 'muy caros',
             imagen_usuario: 'images/users/imagen.usuario',
             id_comentario:2,
       },{
