@@ -15,7 +15,6 @@ let  = {
           id: 1,
           
         },
-        
         {
             nombre: 'Rolex Perpetual 1908' ,
             imagen: '',
@@ -62,4 +61,56 @@ let  = {
             descripcion: '',
             id: 10,
         }
-          ]}
+          ],
+      
+          comentarios:[{
+            nombre_usuario_comentario:'',
+            texto_comentario: '',
+            imagen_usuario: '',
+            id_comentario: 1,
+      },{
+            nombre_usuario_comentario:'',
+            texto_comentario: '',
+            imagen_usuario: '',
+            id_comentario:2,
+      },{
+            nombre_usuario_comentario:'',
+            texto_comentario: '',
+            imagen_usuario: '',
+            id_comentario:3,
+      },{
+            nombre_usuario_comentario:'',
+            texto_comentario: '',
+            imagen_usuario: '',
+            id_comentario: 4,
+      },{
+            nombre_usuario_comentario:'',
+            texto_comentario: '',
+            imagen_usuario: '',
+            id_comentario: 5,
+      },{
+            nombre_usuario_comentario:'',
+            texto_comentario: '',
+            imagen_usuario: '',
+            id_comentario: 6,
+      },{
+            nombre_usuario_comentario:'',
+            texto_comentario: '',
+            imagen_usuario: '',
+            id_comentario: 7,
+      },{
+            nombre_usuario_comentario:'',
+            texto_comentario: '',
+            imagen_usuario: '',
+            id_comentario: 8,
+      },{
+            nombre_usuario_comentario:'',
+            texto_comentario: '',
+            imagen_usuario: '',
+            id_comentario: 9,
+      },{
+            nombre_usuario_comentario:'',
+            texto_comentario: '',
+            imagen_usuario: '',
+            id_comentario: 10,
+      }]}
