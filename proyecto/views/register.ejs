@@ -22,7 +22,7 @@
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-5 col-md-2">
-					<a href="/index" class="main-header_home-link">
+					<a href="/" class="main-header_home-link">
 						<img src="images/logo-mercado-liebre.svg">
 					</a>
 				</div>
@@ -49,22 +49,20 @@
 	
 			<nav class="main-navbar">
 				<ul class="left-navbar">
-					<li><a href="/index">Todos los productos</a></li>
+					<li><a href="/">Todos los productos</a></li>
 					<!-- solo logueado <li><a href="">Cargar productos</a></li> -->
 				</ul>
 	
 				<ul class="right-navbar">
-					<!-- Solo logueado <li><a href="profile.html">
-								Nombre del usuario <i class="fas fa-user"></i>
-							</a>
+					 <li><a href="/profile"> Nombre de usuario <i class="fas fa-user"></i></a>
 						</li>
 						<li>
-							<form action="" method="post">
+							<form action="/" method="get">
 								<button class="logout" type="submit">
 									Cerrar sesión <i class="fas fa-sign-in-alt"></i>
 								</button>
 							</form>
-						</li> -->
+						</li> 
 					<li>
 						<a href="/register">Creá tu cuenta <i class="far fa-address-card"></i>
 						</a>
@@ -85,11 +83,29 @@
 				<h2 class="products-title">Registrate</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de registro. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos <br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
+			<h2 class="col-12">
+				<form action="/profile" method="get">
+					<div>
+						<label for="email">Email: </label>
+						<input id = "email" type="email" name="mail" value ="" >
+						
+						<label for="usuario">Usuario: </label>
+						<input id = "usuario" type="text" name="user" value ="" >
+
+						<label for="password">Contraseña: </label>
+						<input id='password' type="password" name="contra" value = "">
+						
+						<label for="nacimiento">Fecha de nacimiento: </label>
+						<input id='nacimiento' type="date" name="fecha" value = "">
+
+						<label for="docu">DNI: </label>
+						<input id='docu' type="number" name="DNI" value = "">
+
+					</div>
+					<div>
+						<button type="submit"> Register</button>
+					</div>
+				</form> 
 			</h2>
 
 

@@ -1,4 +1,4 @@
-let  = {
+let data = {
         usuario : {
             nombreDeUsuario: 'Mateo',
             apellido: 'Iriarte',
@@ -114,3 +114,5 @@ let  = {
             imagen_usuario: 'images/users/imagen.usuario',
             id_comentario: 10,
       }]}
+
+module.exports = data

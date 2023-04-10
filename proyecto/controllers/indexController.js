@@ -1,3 +1,5 @@
+let data = require('../data/index')
+
 let indexController = {
     index: function(req, res){
         return res.render('index', {})
