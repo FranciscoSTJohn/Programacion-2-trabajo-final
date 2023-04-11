@@ -1,7 +1,8 @@
+let data = require ('../data/index')
 let searchResultsController = {
     index: function(req, res){
-        return res.render('search-results', {})
-    },
-
+        let productos = data.productos
+        return res.render('search-results', {productos: productos, comentarios: data.comentarios})
+    }
 }
 module.exports = searchResultsController
