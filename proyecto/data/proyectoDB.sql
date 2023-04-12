@@ -76,6 +76,7 @@ INSERT INTO productos
 VALUES(default,5,"GM-114GEM-1A9","Trace su propio rumbo con un reloj G-SHOCK de edición limitada del 40.º aniversario de Adventurers Stone. Únase a nosotros para celebrar el 40.º aniversario del G-SHOCK eligiendo uno de estos espectaculares relojes con diseño metálico, inspirados por las piedras que los aventureros han usado para navegar desde la antigüedad. Los colores especiales de los minerales que los antiguos marinos utilizaban para encontrar su rumbo se reproducen en estos diseños de reloj con procesos de forjado, baño de iones y enmascarado, lo que otorga a cada marco metálico un aspecto único. Las correas están fabricadas con resina coloreada o translúcida y tienen una textura única con técnicas de estampado en caliente y moldeado en color de Garal. Estos relojes de edición limitada honran el 40.º aniversario del G-SHOCK de principio a fin: la frase “SINCE 1983” (Desde 1983) aparece en el dial; el logotipo del 40.º aniversario diseñado por Eric Haze está grabado en la parte posterior de la carcasa y hay cuatro estrellas por el 40.º aniversario en el sujetador de la correa.");
 
 
+
 INSERT INTO comentarios
 VALUES (default,1,1,"Que producto maravilloso!");
 INSERT INTO comentarios
