@@ -11,7 +11,7 @@ module.exports = function(sequelize, dataTypes){
             type: dataTypes.STRING
         },
         descripcion:{
-            type: dataTypes.DECIMAL
+            type: dataTypes.STRING
         },
         user_id: {
             type: dataTypes.INTEGER
@@ -21,12 +21,16 @@ module.exports = function(sequelize, dataTypes){
         },
         updated_at:{
             type: dataTypes.DATE
+        },
+        deleted_at:{
+            type: dataTypes.DATE
         }
     }
 
     let conf = {
         createdAt: "created_at", 
-        updatedAt: "updated_at" 
+        updatedAt: "updated_at",
+        deletedAt: "deleted_at",
     }
 
     let producto = sequelize.define(alias, cols, conf);
@@ -39,5 +43,5 @@ module.exports = function(sequelize, dataTypes){
         })
     }
 
-    return movie;
+    return producto;
 }

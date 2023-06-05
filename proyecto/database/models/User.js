@@ -7,9 +7,6 @@ module.exports = function(sequelize, dataTypes){
             autoIncrement: true,
             type: dataTypes.INTEGER
         },
-        name: {
-            type: dataTypes.STRING
-        },
         email:{
             type: dataTypes.STRING
         },
@@ -33,12 +30,19 @@ module.exports = function(sequelize, dataTypes){
         },
         updated_at:{
             type: dataTypes.DATE
+        },
+        deleted_at:{
+            type: dataTypes.DATE
+        },
+        nombreUsuario: {
+            type: dataTypes.STRING
         }
     }
 
     let conf = {
         createdAt: "created_at", 
-        updatedAt: "updated_at" 
+        updatedAt: "updated_at",
+        deletedAt: "deleted_at" 
     }
 
     let user = sequelize.define(alias, cols, conf);
