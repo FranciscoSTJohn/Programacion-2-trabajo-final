@@ -35,26 +35,35 @@
 					<div>
 						<label for="email">Email: </label>
 						<input id = "email" type="email" name="mail" value ="" >
+						<br>
+						<br>
 						
 						<label for="usuario">Usuario: </label>
 						<input id = "usuario" type="text" name="user" value ="" >
+						<br>
+						<br>
 
 						<label for="password">Contraseña: </label>
 						<input id='password' type="password" name="contra" value = "">
+						<br>
+						<br>
 						
 						<label for="nacimiento">Fecha de nacimiento: </label>
 						<input id='nacimiento' type="date" name="fecha" value = "">
+						<br>
+						<br>
 
 						<label for="docu">DNI: </label>
 						<input id='docu' type="number" name="DNI" value = "">
-
 					</div>
 					<div>
 						<button type="submit"> Register </button>
 					</div>
 				</form> 
 			</h2>
-
+			<% if (locals.errors) {%>
+				<p> <% errors.mensaje %> </p>
+			<% } %>
 
 	<!-- footer -->
 	<footer class="main-footer">

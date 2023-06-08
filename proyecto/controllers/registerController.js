@@ -1,4 +1,5 @@
-let db = require('../database/models')
+let db = require('../database/models'); 
+const bcrypt = require('bcryptjs'); 
 let registerController = {
     index: function(req, res){
         return res.render('register', {})
@@ -10,11 +11,18 @@ let registerController = {
              
         let user = {
             email: form.mail, 
-            password: form.contra,
+            password: bcrypt.hashSync(form.contra,10),
             nombreUsuarios: form.user,
             fecha: form.fecha,
             DNI: form.DNI
             }
+
+        let errors = {}
+        if (form.mail == "") {
+            errors.mensaje = "Ingresa tu email!";
+            res.locals.error = errors;
+            return res.render('register'); 
+        }
 
         db.User.create(user)
             .then(function(usuarioCreado){ 
@@ -26,7 +34,5 @@ let registerController = {
             })
          }
     }    
-
-
 
 module.exports = registerController

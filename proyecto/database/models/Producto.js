@@ -16,21 +16,23 @@ module.exports = function(sequelize, dataTypes){
         user_id: {
             type: dataTypes.INTEGER
         },
-        created_at:{
+        createdAt:{
             type: dataTypes.DATE
         },
-        updated_at:{
+        updateAt:{
             type: dataTypes.DATE
         },
-        deleted_at:{
+        deletedAt:{
             type: dataTypes.DATE
         }
     }
 
     let conf = {
+        tableName: "productos",
         createdAt: "created_at", 
-        updatedAt: "updated_at",
+        updateAt: "updated_at",
         deletedAt: "deleted_at",
+
     }
 
     let producto = sequelize.define(alias, cols, conf);

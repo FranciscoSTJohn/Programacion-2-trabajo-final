@@ -15,13 +15,13 @@ module.exports = function(sequelize,dataTypes){
        comentario: {
            type: dataTypes.STRING
        },
-       created_at:{
+       createdAt:{
            type: dataTypes.DATE
        },
-       updated_at:{
+       updateAt:{
            type: dataTypes.DATE
        },
-       deleted_at:{
+       deletedAt:{
            type: dataTypes.DATE
        },
        usuario_comentario: {
@@ -31,7 +31,7 @@ module.exports = function(sequelize,dataTypes){
 
    let conf = {
        createdAt: "created_at", 
-       updatedAt: "updated_at",
+       updateAt: "updated_at",
        deletedAt: "deleted_at" 
    }
 

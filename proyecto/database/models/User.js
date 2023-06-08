@@ -22,13 +22,10 @@ module.exports = function(sequelize, dataTypes){
         DNI: {
             type: dataTypes.INTEGER
         },
-        //remember_token:{
-        //    type: dataTypes.STRING
-        //},
         createdAt:{
             type: dataTypes.DATE
         },
-        updateAt:{
+        updatedAt:{
             type: dataTypes.DATE
         },
         deletedAt:{
@@ -39,9 +36,10 @@ module.exports = function(sequelize, dataTypes){
         }
     }
     let conf = {
-
+        tableName: "users",
+        timestamps: false
     }
-
+    
     let user = sequelize.define(alias, cols, conf);
 
     return user;
