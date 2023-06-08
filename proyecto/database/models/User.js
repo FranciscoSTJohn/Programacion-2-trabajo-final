@@ -22,27 +22,24 @@ module.exports = function(sequelize, dataTypes){
         DNI: {
             type: dataTypes.INTEGER
         },
-        remember_token:{
-            type: dataTypes.STRING
-        },
-        created_at:{
+        //remember_token:{
+        //    type: dataTypes.STRING
+        //},
+        createdAt:{
             type: dataTypes.DATE
         },
-        updated_at:{
+        updateAt:{
             type: dataTypes.DATE
         },
-        deleted_at:{
+        deletedAt:{
             type: dataTypes.DATE
         },
-        nombreUsuario: {
+        nombreUsuarios: {
             type: dataTypes.STRING
         }
     }
-
     let conf = {
-        createdAt: "created_at", 
-        updatedAt: "updated_at",
-        deletedAt: "deleted_at" 
+
     }
 
     let user = sequelize.define(alias, cols, conf);
