@@ -40,7 +40,15 @@ module.exports = function(sequelize, dataTypes){
         timestamps: false
     }
     
-    let user = sequelize.define(alias, cols, conf);
+    let User = sequelize.define(alias, cols, conf);
 
-    return user;
+   // User.associate= function (models) {
+     //   User.(models.Productos,{              falta el tipo de relacion que hay entre la tbla usuario y la tabla productos
+            // as: "productos",
+             //foreignKey: falta agregar la columna de id productos a la tabla usuario y lo mismo con lo de comentario
+    //    })
+        
+    //}
+
+    return User;
 }

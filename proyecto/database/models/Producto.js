@@ -35,15 +35,15 @@ module.exports = function(sequelize, dataTypes){
 
     }
 
-    let producto = sequelize.define(alias, cols, conf);
+    let Producto = sequelize.define(alias, cols, conf);
 
-    producto.associate = function(models){
+    Producto.associate = function(models){
         
-        producto.belongsTo(models.User, {
+        Producto.belongsTo(models.User, {
             as: "user",
             foreignKey:"user_id"
         })
     }
 
-    return producto;
+    return Producto;
 }
