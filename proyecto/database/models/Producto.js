@@ -29,9 +29,11 @@ module.exports = function(sequelize, dataTypes){
 
     let conf = {
         tableName: "productos",
+        timestamps: false,
+        underscored: true,
         createdAt: "created_at", 
         updateAt: "updated_at",
-        deletedAt: "deleted_at",
+        deletedAt: "deleted_at"
 
     }
 

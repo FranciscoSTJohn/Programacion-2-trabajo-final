@@ -1,6 +1,5 @@
-let db= require("../database/models");
-let op= db.sequelize.Op;
-
+let db = require('../database/models'); 
+let op= db.Sequelize.Op;
 
 let searchResultsController = {
     index: function(req, res){
@@ -8,15 +7,20 @@ let searchResultsController = {
         
         let filtrados={
             where:{
-                [op]:[
-                    {nombre_producto:{[op.like]: `%${buscado}%`}},
-                    {descripcion:{[op.like]:`%${buscado}%`}}
-                ]
-            }
+                [op.or]:[
+                {nombre_producto:{[op.like]: `%${buscado}%`}},
+                {descripcion:{[op.like]:`%${buscado}%`}}
+                ] 
+            },
+            // order: [["","DESC"]]
         }
-        db.Producto.findall(filtrados)
-        .then((Producto))
-            return res.render('search-results', {Producto: nombre_producto})
+        db.Producto.findAll(filtrados)
+            .then(function(productos){
+                return res.render('search-results', {Productos: nombre_producto})
+            })
+            .catch(function(error){
+                console.log(error);
+            })
     }
 }
 module.exports = searchResultsController
