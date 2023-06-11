@@ -16,7 +16,7 @@ let searchResultsController = {
         }
         db.Producto.findAll(filtrados)
             .then(function(productos){
-                return res.render('search-results', {Productos: nombre_producto})
+                return res.render('search-results', {productos})
             })
             .catch(function(error){
                 console.log(error);

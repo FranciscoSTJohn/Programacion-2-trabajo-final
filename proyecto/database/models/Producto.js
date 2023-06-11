@@ -7,14 +7,14 @@ module.exports = function(sequelize, dataTypes){
             autoIncrement: true,
             type: dataTypes.INTEGER
         },
+        user_id: {
+            type: dataTypes.INTEGER
+        },
         nombre_producto: {
             type: dataTypes.STRING
         },
         descripcion:{
             type: dataTypes.STRING
-        },
-        user_id: {
-            type: dataTypes.INTEGER
         },
         createdAt:{
             type: dataTypes.DATE
@@ -22,19 +22,15 @@ module.exports = function(sequelize, dataTypes){
         updateAt:{
             type: dataTypes.DATE
         },
-        deletedAt:{
+        deletAt:{
             type: dataTypes.DATE
         }
     }
 
     let conf = {
         tableName: "productos",
-        timestamps: false,
+        timestamps: true,
         underscored: true,
-        createdAt: "created_at", 
-        updateAt: "updated_at",
-        deletedAt: "deleted_at"
-
     }
 
     let Producto = sequelize.define(alias, cols, conf);

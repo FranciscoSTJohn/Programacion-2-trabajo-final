@@ -26,10 +26,12 @@
 	<!-- Novedades -->
 	<div class="container products-wrapper"> 	<!--Despues tendriamos que ver como hacer para que cada producto te lleve a su detalle -->
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= productos[1].nombre %></h2> 
+			<% for (let i = 0; i < productos.nombre_producto.length; i++) {%>
+			<h2 class="products-title"><%= productos[i].nombre_producto %></h2> 
 			<p class="product-detail-description">
 				<a href="/product/add">Editar</a>
 			</p>
+			<% } %>
 		</div>
 		<div class="product-detail">
 			<div class="row">
