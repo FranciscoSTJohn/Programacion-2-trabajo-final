@@ -24,49 +24,30 @@
 	<!-- /Header -->
 
 	<!-- Novedades -->
-	<div class="container products-wrapper"> 	<!--Despues tendriamos que ver como hacer para que cada producto te lleve a su detalle -->
-		<div class="d-flex align-items-center">
-			<% for (let i = 0; i < productos.nombre_producto.length; i++) {%>
-			<h2 class="products-title"><%= productos[i].nombre_producto %></h2> 
-			<p class="product-detail-description">
-				<a href="/product/add">Editar</a>
-			</p>
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title"><%=buscado %></h2>
+			</div>
+			<% for (let i = 0; i < productos.length; i++) { %>
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+					<a href='/product/id/<%=productos[i].id%>'>
+						<figure class="product-box_image">
+							<img src="/<%=productos[i].imagenes %>" alt="Imagen del producto">
+						</figure>
+						<article class="product-box_data">
+							<h2><%=productos[i].nombre_producto%></h2>
+							<p><%=productos[i].descripcion_corta%></p>
+							<p>Comentarios:10 </p>
+						</article>
+					</a>
+					</section>	
+				</div>
+		
 			<% } %>
 		</div>
-		<div class="product-detail">
-			<div class="row">
-				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/products/rolex-2.jpg" alt="Imagen del producto" class="product-detail-img">
-					<p class="product-detail-description"><%= productos[1].descripcion %></p>
-				</article>
-				<div class="col-12 col-lg-4">
-					<section class="comments">
-						<% for (let i = 0; i < comentarios.length; i++) {%>
-							<article>
-								<img src="/images/users/imagen.usuario.jpg" alt="">
-								<div class="data">
-									<p class="user">
-									<strong> <a href="/profile"><%=comentarios[i].nombre_usuario_comentario %></a></strong>
-									<%=comentarios[i].texto_comentario %>
-									</p>
-								</div>	
-							</article>
-							
-						<% } %>
-						
-						
-					</section>
-					<form class="form" action="/product" method="get">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-					</form>
-					<hr>
-				</div>
-			</div>
-		</div>
 	</div>
-
-
 	<!-- footer -->
 	<footer class="main-footer">
 		<div class="container">+

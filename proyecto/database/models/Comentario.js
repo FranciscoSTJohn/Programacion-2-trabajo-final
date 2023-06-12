@@ -32,10 +32,6 @@ module.exports = function(sequelize,dataTypes){
    let conf = {
         tableName: "comentarios",
         timestamps: false,
-        underscored: true,
-       createdAt: "created_at", 
-       updateAt: "updated_at",
-       deletedAt: "deleted_at" 
    }
 
    let comentario = sequelize.define(alias,cols,conf);

@@ -16,21 +16,29 @@ module.exports = function(sequelize, dataTypes){
         descripcion:{
             type: dataTypes.STRING
         },
+        fecha_carga:{
+            type: dataTypes.DATE
+        },
+        descripcion_corta:{
+            type: dataTypes.STRING
+        },
+        imagenes:{
+            type: dataTypes.STRING
+        },
         createdAt:{
             type: dataTypes.DATE
         },
         updateAt:{
             type: dataTypes.DATE
         },
-        deletAt:{
+        deletedAt:{
             type: dataTypes.DATE
         }
     }
 
     let conf = {
         tableName: "productos",
-        timestamps: true,
-        underscored: true,
+        timestamps: false,
     }
 
     let Producto = sequelize.define(alias, cols, conf);

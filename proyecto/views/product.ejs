@@ -24,7 +24,7 @@
 	<!-- product detail -->
 	<div class="container products-wrapper"> 	<!--Despues tendriamos que ver como hacer para que cada producto te lleve a su detalle -->
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= productos[1].nombre %></h2> 
+			<h2 class="products-title"><%= productos.nombre_producto %></h2> 
 			<p class="product-detail-description">
 				<a href="/product/add">Editar</a>
 			</p>
@@ -32,8 +32,8 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/products/rolex-2.jpg" alt="Imagen del producto" class="product-detail-img">
-					<p class="product-detail-description"><%= productos[1].descripcion %></p>
+					<img src="/<%=productos.imagenes %>" alt="Imagen del producto" class="product-detail-img">
+					<p class="product-detail-description"><%= productos.descripcion %></p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
