@@ -25,13 +25,13 @@ module.exports = function(sequelize, dataTypes){
         createdAt:{
             type: dataTypes.DATE
         },
-        updatedAt:{
+        updateAt:{
             type: dataTypes.DATE
         },
         deletedAt:{
             type: dataTypes.DATE
         },
-        nombreUsuarios: {
+        nombreUsuario: {
             type: dataTypes.STRING
         }
     }
@@ -42,13 +42,17 @@ module.exports = function(sequelize, dataTypes){
     
     let User = sequelize.define(alias, cols, conf);
 
-   // User.associate= function (models) {
-     //   User.(models.Productos,{              falta el tipo de relacion que hay entre la tbla usuario y la tabla productos
-            // as: "productos",
-             //foreignKey: falta agregar la columna de id productos a la tabla usuario y lo mismo con lo de comentario
-    //    })
+   User.associate= function (models) {
+       User.hasMany(models.Producto,{ 
+            as: "los_productos",
+            foreignKey: 'user_id'
+       });
+       User.hasMany(models.Comentario,{
+        as: "los_comentarios",
+        foreignKey: "user_id",
+       })
         
-    //}
+    }
 
     return User;
 }

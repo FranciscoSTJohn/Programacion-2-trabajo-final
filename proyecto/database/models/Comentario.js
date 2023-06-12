@@ -23,9 +23,6 @@ module.exports = function(sequelize,dataTypes){
        },
        deletedAt:{
            type: dataTypes.DATE
-       },
-       usuario_comentario: {
-           type: dataTypes.STRING
        }
    }
 
@@ -35,6 +32,19 @@ module.exports = function(sequelize,dataTypes){
    }
 
    let comentario = sequelize.define(alias,cols,conf);
+
+   comentario.associate = function (models) {
+
+    comentario.belongsTo(models.User,{
+        as: "el_usuario",
+        foreignKey:"user_id"
+    }),
+    comentario.belongsTo(models.Producto,{
+        as: "el_producto",
+        foreignKey:"productos_id"
+    })
+
+   }
 
    return comentario
 }

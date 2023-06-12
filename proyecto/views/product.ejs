@@ -37,13 +37,13 @@
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<% for (let i = 0; i < comentarios.length; i++) {%>
+						<% for (let i = 0; i < productos.length; i++) {%>
 							<article>
-								<img src="/images/users/imagen.usuario.jpg" alt="">
+								<!-- <img src="/images/users/imagen.usuario.jpg" alt="">  COMPLETAR-->
 								<div class="data">
 									<p class="user">
-									<strong> <a href="/profile"><%=comentarios[i].nombre_usuario_comentario %></a></strong>
-									<%=comentarios[i].texto_comentario %>
+									<strong> <a href="/profile/id/:<%=productos.user_id%>"><%=productos[i].nombreUsuario%></a></strong> <!-- corregir esto y preguntar porque no aparece en la vista -->
+									<%=productos[i].comentario%><!-- PORQUE NO APARECE ESTA PARTE EN LA VISTA-->
 									</p>
 								</div>	
 							</article>
