@@ -22,6 +22,9 @@ module.exports = function(sequelize, dataTypes){
         DNI: {
             type: dataTypes.INTEGER
         },
+        nombreUsuario: {
+            type: dataTypes.STRING
+        },
         createdAt:{
             type: dataTypes.DATE
         },
@@ -30,10 +33,8 @@ module.exports = function(sequelize, dataTypes){
         },
         deletedAt:{
             type: dataTypes.DATE
-        },
-        nombreUsuario: {
-            type: dataTypes.STRING
         }
+        
     }
     let conf = {
         tableName: "users",
