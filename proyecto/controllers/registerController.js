@@ -17,12 +17,18 @@ let registerController = {
         }
         let errors = {}
         //COMPLETAR EL CHEQUEO DE QUE EL MAIL YA EXISTA// EL RESTO YA FUNCIONA
-       db.User.findOne({
-        where:[
-            {email: {[op.like]:req.body.mail}}]
-       })
+        
+    let mail_repetido= {where:[{email: {[op.like]:req.body.mail}}]}
 
-        if (mail_repetido == null){
+       db.User.findOne(mail_repetido)
+         .then(function(mail_repetido){
+        return mail_repetido
+       })
+            .catch(function(e){
+             console.log(e);
+            })
+
+        if (mail_repetido != undefined){
             errors.message = "El mail escrito ya esta registrado";
             res.locals.errors = errors
             return res.render('register')
