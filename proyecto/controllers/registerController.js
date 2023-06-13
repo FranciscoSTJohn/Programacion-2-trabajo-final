@@ -17,25 +17,19 @@ let registerController = {
         }
         let errors = {}
         //COMPLETAR EL CHEQUEO DE QUE EL MAIL YA EXISTA// EL RESTO YA FUNCIONA
-        
-    let mail_repetido= {where:[{email: {[op.like]:req.body.mail}}]}
+        // let mail_repetido= {where:[{email: {[op.like]:req.body.mail}}]}
 
-       db.User.findOne(mail_repetido)
-         .then(function(mail_repetido){
-        return mail_repetido
-       })
-            .catch(function(e){
-             console.log(e);
-            })
-
-        if (mail_repetido != undefined){
-            errors.message = "El mail escrito ya esta registrado";
-            res.locals.errors = errors
-            return res.render('register')
-        }
+       
+    //     db.User.findOne(mail_repetido)
+    //     .then(function(mail_repetido){
+    //     return mail_repetido
+    //    })
+    //    .catch(function(e){
+    //     console.log(e);
+    //    })
 
 
-        else if (req.body.mail == '' && req.body.contra == '' ){
+        if (req.body.mail == '' && req.body.contra == '' ){
             errors.message = "Los campos de Email y contraseña estan vacios, completelos";
             res.locals.errors = errors
             return res.render('register')
