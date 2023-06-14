@@ -29,26 +29,27 @@
 			<div class="col-12">
 				<h2 class="products-title">Resultado Busqueda: <%=buscado %></h2>
 			</div>
-			<% if (locals.errors) {%>
-				<p class = "error"> <%= errors.message %> </p>
+			<% if (productos.length <= 0) {%>
+				<p class = "error">No hubo coincidencias con su busqueda <%= buscado %></p>
 			<% } %>
-			<% for (let i = 0; i < productos.length; i++) { %>
-				<div class="col-12 col-sm-6 col-lg-3">
-					<section class="product-box">
-					<a href='/product/id/<%=productos[i].id%>'>
-						<figure class="product-box_image">
-							<img src="/<%=productos[i].imagenes %>" alt="Imagen del producto">
-						</figure>
-						<article class="product-box_data">
-							<h2><%=productos[i].nombre_producto%></h2>
-							<p><%=productos[i].descripcion_corta%></p>
-							<p>Comentarios:10 </p>
-						</article>
-					</a>
-					</section>	
-				</div>
-		
-			<% } %>
+			<% if (productos.length > 0){%>
+				<% for (let i = 0; i < productos.length; i++) { %>
+					<div class="col-12 col-sm-6 col-lg-3">
+						<section class="product-box">
+						<a href='/product/id/<%=productos[i].id%>'>
+							<figure class="product-box_image">
+								<img src="/<%=productos[i].imagenes %>" alt="Imagen del producto">
+							</figure>
+							<article class="product-box_data">
+								<h2><%=productos[i].nombre_producto%></h2>
+								<p><%=productos[i].descripcion_corta%></p>
+								<p>Comentarios:10 </p>
+							</article>
+						</a>
+						</section>	
+					</div>
+				<% } %>
+				<% } %>
 		</div>
 	</div>
 	<!-- footer -->

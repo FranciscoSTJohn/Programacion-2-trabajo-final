@@ -31,7 +31,7 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12"> 
-					<form action="/profile" method="get">
+					<form action='/login' method="post">
 						<div>
 							<label for="email">Email: </label>
 							<input id = "email" type="email" name="mail" value ="" >
@@ -44,6 +44,10 @@
 							<button type="submit"> Ingresar </button>
 						</div>
 					</form> 
+					<% if (locals.errors) {%>
+						<p class = "error"> <%= errors.message %> </p>
+					<% } %>
+
 			</h2>
 
 
