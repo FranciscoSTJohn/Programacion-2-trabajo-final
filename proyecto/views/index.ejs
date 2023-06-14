@@ -19,7 +19,17 @@
 </head>
 <body>
 	<!-- Header -->
-	<%- include('./partials/headernologueado') %>
+	<% if (locals.user != undefined) { %>
+
+		<%-include('./partials/headerLogueado')%> 
+
+	<%} %>
+	<% if (locals.user == undefined){%>
+		
+		<%-include('./partials/headernologueado')%> 
+
+	<% } %>
+	
 	<!-- /Header -->
 	
 	<!-- Banner -->
