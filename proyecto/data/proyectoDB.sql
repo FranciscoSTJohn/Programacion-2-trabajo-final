@@ -281,3 +281,6 @@ WHERE id=9;
 UPDATE productos
 SET imagenes= "images/products/casio-5.jpg"
 WHERE id=10;
+
+ALTER TABLE productos
+DROP fecha_carga;
