@@ -27,8 +27,11 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title"><%=buscado %></h2>
+				<h2 class="products-title">Resultado Busqueda: <%=buscado %></h2>
 			</div>
+			<% if (locals.errors) {%>
+				<p class = "error"> <%= errors.message %> </p>
+			<% } %>
 			<% for (let i = 0; i < productos.length; i++) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">

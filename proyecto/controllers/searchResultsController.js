@@ -14,12 +14,18 @@ let searchResultsController = {
             },
             order: [["fecha_carga","DESC"]]
         }
-        if (filtrados != undefined){
-            
-        }
+        let errors = {}
+        
         db.Producto.findAll(filtrados)
             .then(function(productos){
-                return res.render('search-results', {productos: productos, buscado:buscado})
+                if ({productos:{[op.in]:`%${buscado}%`}}){
+                    return res.render('search-results', {productos: productos, buscado:buscado})
+                    }
+                else{
+                    errors.message = "No se encontro ";
+                    res.locals.errors = errors
+                    return res.render('search-results',{productos: productos, buscado:buscado})}
+                
             })
             .catch(function(error){
                 console.log(error);
