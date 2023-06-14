@@ -14,7 +14,7 @@ let searchResultsController = {
             },
             order: [["fecha_carga","DESC"]]
         }
-        if (filtrados!=undefined){
+        if (filtrados != undefined){
             
         }
         db.Producto.findAll(filtrados)
