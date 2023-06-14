@@ -1,13 +1,23 @@
-let data = require('../data/index')
+let db = require('../database/models'); 
+
 let profileController = {
     index: function(req, res){
-        let usuario = data.usuario
-        let productos = data.productos
-        return res.render('profile', {usuario: usuario, productos:productos})
+        let id =req.params.id
+        db.User.findByPk(id,{
+            include:[
+                {association: "los_comentarios"},
+                {association:"los_productos",  order: [["createdAt","DESC"]]}
+        ]})
+            .then(function(perfiles){
+                return res.render('profile', {perfiles: perfiles})
+            })
+            .catch( function(error){
+                console.log(error);
+            })
     },
     Edit: function(req, res){
-        let usuario = data.usuario
-        return res.render('profile-edit',{usuario: usuario})
+        
+        return res.render('profile-edit')
     },
 }
 module.exports = profileController

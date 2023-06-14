@@ -3,7 +3,7 @@ let router = express.Router();
 let profileController = require('../controllers/profileController')
 
 //rutas.
-router.get('/', profileController.index);
+router.get('/id/:id', profileController.index);
 router.get('/edit', profileController.Edit);
 
 

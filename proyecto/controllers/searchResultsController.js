@@ -4,19 +4,21 @@ let op= db.Sequelize.Op;
 let searchResultsController = {
     index: function(req, res){
         let buscado=req.query.search;
-
-        let filtrados={
-            where:{
+        let errors = {}
+        
+        db.Producto.findAll(
+            {
+                include:[
+                    {association: "usuario"}]
+            },
+            {where:{
                 [op.or]:[
                 {nombre_producto:{[op.like]: `%${buscado}%`}},
                 {descripcion_corta:{[op.like]:`%${buscado}%`}}
                 ] 
-            },
-            order: [["fecha_carga","DESC"]]
-        }
-        let errors = {}
-        
-        db.Producto.findAll(filtrados)
+            }},
+            {order: [["createdAt","DESC"]]}
+            )
             .then(function(productos){
                     return res.render('search-results', {productos: productos, buscado:buscado})
                     })

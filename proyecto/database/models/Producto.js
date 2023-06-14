@@ -16,9 +16,6 @@ module.exports = function(sequelize, dataTypes){
         descripcion:{
             type: dataTypes.STRING
         },
-        fecha_carga:{
-            type: dataTypes.DATE
-        },
         descripcion_corta:{
             type: dataTypes.STRING
         },

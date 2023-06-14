@@ -2,9 +2,15 @@ let db = require('../database/models');
 
 let indexController = {
     index: function(req, res){
-        db.Producto.findAll({
-            order: [["fecha_carga","DESC"]]
-        })
+        db.Producto.findAll(
+            {
+                include:[
+                    {association: "usuario"}]
+            },
+            {
+            order: [["createdAt","DESC"]]
+        }
+        )
             .then (function(productos){
                 return res.render('index', {productos: productos})
             })
