@@ -62,40 +62,25 @@ let loginController = {
                 res.locals.errors= errors
                 return res.render('login',{resultado:resultado})
             }
-
-            
-                
-
-                
-
             }
         
 
-        )}
-        
+        )},
+
+        logout: function(req,res) {
+            req.session.destroy()
+
+            res.clearCookie('info_usuario')
+
+            res.redirect('/')
+            }
         
 
         
             
         
            
-    //     falta agarrar los datos del formulario
-    //     req.session.user ={
-    //         mail: buscar el mail en la db
-    //         username: buscar el name en la db
-    //     }
-
-    //     Preguntar si el usuario tildo el checkbox para recordarlo
-    //     if (req.body.recordame != undefined){
-    //         res.cookie()
-    //     }
-    //     return res.send(req.session)
-    // },
-
-//logout: function(req,res){
-    //         req.session.destroy();
-    //         return res.redirect("/")
-    //     }
+   
 
     }
 module.exports = loginController
