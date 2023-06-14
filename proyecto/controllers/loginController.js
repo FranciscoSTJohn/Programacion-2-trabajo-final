@@ -8,6 +8,12 @@ let loginController = {
         }
     },
     login: function(req,res){
+        if(req.session.user != undefined){
+            return res.redirect('/')
+        } else {
+            return res.render('login');
+        }
+        },
         //falta agarrar los datos del formulario
         // req.session.user ={
         //     mail: buscar el mail en la db
@@ -15,15 +21,15 @@ let loginController = {
         // }
 
         //Preguntar si el usuario tildo el checkbox para recordarlo
-        if (req.body.recordame != undefined){
-            res.cookie()
-        }
-        return res.send(req.session)
-    },
-    logout: function(req,res){
-        req.session.destroy();
-        return res.redirect("/")
-    }
+        // if (req.body.recordame != undefined){
+        //     res.cookie()
+        // }
+        // return res.send(req.session)
+//     },
+//     logout: function(req,res){
+//         req.session.destroy();
+//         return res.redirect("/")
+//     }
 
-}
+    }
 module.exports = loginController
