@@ -5,11 +5,9 @@ let indexController = {
         db.Producto.findAll(
             {
                 include:[
-                    {association: "usuario"}]
-            },
-            {
-            order: [["createdAt","DESC"]]
-        }
+                    {association: "usuario"}],
+                order: [["createdAt","DESC"]]
+            }
         )
             .then (function(productos){
                 return res.render('index', {productos: productos})

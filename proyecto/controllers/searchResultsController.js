@@ -7,14 +7,14 @@ let searchResultsController = {
         let errors = {}
         
         let filtrados={
-            include:[{association: "usuario"}],
             where:{
                 [op.or]:[
                 {nombre_producto:{[op.like]: `%${buscado}%`}},
                 {descripcion_corta:{[op.like]:`%${buscado}%`}}
                 ] 
             },
-            order: [["fecha_carga","DESC"]]
+            include:[{association: "usuario"}],
+            order: [["createdAt","DESC"]]
         }
                 
         db.Producto.findAll(filtrados)
