@@ -7,7 +7,7 @@ router.get('/', loginController.index);
 
 router.post('/',loginController.login);
 
-router.get('/', loginController.logout)
+router.get('/logout', loginController.logout)
 
 
 

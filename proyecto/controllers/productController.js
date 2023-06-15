@@ -1,4 +1,5 @@
-let db = require('../database/models')
+let db = require('../database/models');
+const { Edit } = require('./profileController');
 
 
 
@@ -16,11 +17,47 @@ let productController = {
             .catch( function(error){
                 console.log(error);
             })
-        
-
     },
-    Add: function(req,res){
-        return res.render('product-add',{usuario:data.usuario})
+
+    addLogueado: function (req,res) {
+        if (req.session.user == undefined) {
+            return res.redirect('/login')
+        }
+        else{ 
+            return res.render('product-add')
+        }
+    },
+
+    add: function(req,res){
+        let product = {
+            imagenes : req.body.imagen, 
+            nombre_producto : req.body.productNom, 
+            descripcion : req.body.descript,
+            user_id : req.session.user.id
+        }
+
+        db.Producto.create(product)
+        .then(function (productoCreado) {
+            res.redirect(`/profile/id/${req.session.user.id}`)
+        })
+        .catch (function (e) {
+            console.log(e);
+        })
+    },
+    editLogueado: function (req,res) {
+
+        let errors = {}
+        if (req.session.user == undefined) {
+            errors.message = 'Debes ingresar para editar tu producto'
+            res.locals.errors = errors
+            return res.redirect('/login')
+        }
+        else{ 
+            return res.render('product-edit')
+        }
+    },
+    edit: function (req,res) {
+        
     }
 
 }
