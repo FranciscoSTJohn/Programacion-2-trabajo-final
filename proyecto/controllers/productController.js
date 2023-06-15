@@ -33,6 +33,7 @@ let productController = {
             imagenes : req.body.imagen, 
             nombre_producto : req.body.productNom, 
             descripcion : req.body.descript,
+            descripcion_corta : req.body.descript_brief,
             user_id : req.session.user.id
         }
 
@@ -53,12 +54,11 @@ let productController = {
             return res.render('login')
         }
         else{
-
             let id = req.params.id; 
 
             db.Producto.findByPk(id)
             .then(function (producto) {
-                return res.render(producto)
+                return res.send(producto)
                 // if (req.session.user.id != producto.user_id) {
                 //     return res.redirect (`/profile/id/${req.session.user.id}`)
                 // }
