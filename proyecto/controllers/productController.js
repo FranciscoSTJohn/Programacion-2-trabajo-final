@@ -53,6 +53,28 @@ let productController = {
             return res.render('login')
         }
         else{
+
+            let id = req.params.id; 
+
+            db.Producto.findByPk(id)
+            .then(function (producto) {
+                return res.render(producto)
+                // if (req.session.user.id != producto.user_id) {
+                //     return res.redirect (`/profile/id/${req.session.user.id}`)
+                // }
+                // else{
+                //     return res.render('product-edit', {info_producto: producto})
+                // }
+            }
+            )
+            .catch(function (e) {
+                console.log(e);
+            })
+
+
+
+
+
             return res.render('product-edit')
         }
     },
