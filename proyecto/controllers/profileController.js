@@ -3,13 +3,9 @@ let db = require('../database/models');
 let profileController = {
     index: function(req, res){
         let id =req.params.id
-        db.User.findByPk(id,{
-            include:[
-                {association: "los_comentarios"},
-                {association:"los_productos",  order: [["createdAt","DESC"]]}
-        ]})
+        db.User.findByPk(id)
             .then(function(perfiles){
-                return res.render('profile', {perfiles: perfiles})
+                return res.send(perfiles)
             })
             .catch( function(error){
                 console.log(error);

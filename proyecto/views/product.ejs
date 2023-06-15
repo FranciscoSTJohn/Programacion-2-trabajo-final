@@ -18,11 +18,19 @@
 </head>
 <body>
 	<!-- Header -->
-	
+	<% if (locals.user != undefined) { %>
+
+		<%-include('./partials/headerLogueado')%> 
+
+	<%} %>
+	<% if (locals.user == undefined){%>
+		
+		<%-include('./partials/headernologueado')%> 
+
+	<% } %>
 	<!-- /Header -->
-	<%- include('./partials/headernologueado') %>
-	<!-- product detail -->
-	<div class="container products-wrapper"> 	<!--Despues tendriamos que ver como hacer para que cada producto te lleve a su detalle -->
+		<!-- product detail -->
+	<div class="container products-wrapper"> 	
 		<div class="d-flex align-items-center">
 			<h2 class="products-title"><%= productos.nombre_producto %></h2> 
 			<p class="product-detail-description">
@@ -36,22 +44,21 @@
 					<p class="product-detail-description"><%= productos.descripcion %></p>
 				</article>
 				<div class="col-12 col-lg-4">
-					<section class="comments">
-						<% for (let i = 0; i < productos.length; i++) {%>
+					<% for (let i = 0; i < productos.los_comentarios.length; i++) {%>
+						<section class="comments">
+						
 							<article>
-								<!-- <img src="/images/users/imagen.usuario.jpg" alt="">  COMPLETAR-->
+								<img src="/<%= productos.los_comentarios[i].el_usuario.foto_de_perfil %>" alt=""> 
 								<div class="data">
 									<p class="user">
-									<strong> <a href="/profile/id/:<%=productos.user_id%>"><%=productos[i].nombreUsuario%></a></strong> <!-- corregir esto y preguntar porque no aparece en la vista -->
-									<%=productos[i].comentario%><!-- PORQUE NO APARECE ESTA PARTE EN LA VISTA-->
+									<strong> <a href="/profile/id/<%=productos.los_comentarios[i].user_id%>"><%=productos.los_comentarios[i].el_usuario.nombreUsuario%></a></strong> <!-- corregir esto y preguntar porque no aparece en la vista, NO ENTIENDO PORQUE NO APARECE EN LA VISTA LA FOTO DE PERFIL,NI EL NOMBRE USUARIO-->
+									<!-- PORQUE NO APARECE ESTA PARTE EN LA VISTA-->
 									</p>
+									<p class="data"><%=productos.los_comentarios[i].comentario%></p>
 								</div>	
 							</article>
-							
+						</section>
 						<% } %>
-						
-						
-					</section>
 					<form class="form" action="/product" method="get">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>

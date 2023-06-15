@@ -1,13 +1,14 @@
 let db = require('../database/models')
 
 
+
 let productController = {
     index: function(req, res){
         let id= req.params.id;
         db.Producto.findByPk(id,{
             include:[
-                {association: "los_comentarios", include:[{association:"el_usuario"}]},
-                {association:"usuario"}
+                {association:"usuario"},
+                {association: "los_comentarios", include:[{association:"el_usuario"}],limit : 6, } //order:['createdAt','DESC'] chequear porque no me dej hacerlos descendentes
         ]})
             .then(function(productos){
                 return res.render('product', {productos: productos})

@@ -6,26 +6,34 @@ let searchResultsController = {
         let buscado=req.query.search;
         let errors = {}
         
-        db.Producto.findAll(
-            {
-                include:[
-                    {association: "usuario"}]
-            },
-            {where:{
+        let filtrados={
+            include:[{association: "usuario"}],
+            where:{
                 [op.or]:[
                 {nombre_producto:{[op.like]: `%${buscado}%`}},
                 {descripcion_corta:{[op.like]:`%${buscado}%`}}
                 ] 
-            }},
-            {order: [["createdAt","DESC"]]}
-            )
+            },
+            order: [["fecha_carga","DESC"]]
+        }
+                
+        db.Producto.findAll(filtrados)
             .then(function(productos){
+                if ({productos:{[op.in]:`%${buscado}%`}}){
                     return res.render('search-results', {productos: productos, buscado:buscado})
-                    })
-                    
-            .catch(function(error){
-                console.log(error);
+                    }
+                else{
+                    errors.message = "No se encontro ";
+                    res.locals.errors = errors
+                    return res.render('search-results',{productos: productos, buscado:buscado})}
+                
+                })
+        
+            .catch(function(e){
+                console.log(e);
             })
-    }
-}
+    }// esta es una barrita del metodo index
+    }// esta es la barrita final del controlador
+
 module.exports = searchResultsController
+

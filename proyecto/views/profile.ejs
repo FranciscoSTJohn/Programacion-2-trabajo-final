@@ -18,8 +18,16 @@
 </head>
 <body>
 	<!-- Header -->
-	<%- include('./partials/headerLogueado.ejs') %>
-	<!-- /Header -->
+	<% if (locals.user != undefined) { %>
+
+		<%-include('./partials/headerLogueado')%> 
+
+	<%} %>
+	<% if (locals.user == undefined){%>
+		
+		<%-include('./partials/headernologueado')%> 
+
+	<% } %>	<!-- /Header -->
 
 	<!-- Datos del usuario -->
 	<section class="info-usuario container products-wrapper">
