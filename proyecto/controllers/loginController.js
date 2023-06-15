@@ -74,7 +74,7 @@ let loginController = {
 
             res.redirect('/')
             }
-        
+
 
         
             

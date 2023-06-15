@@ -50,9 +50,9 @@ let productController = {
         if (req.session.user == undefined) {
             errors.message = 'Debes ingresar para editar tu producto'
             res.locals.errors = errors
-            return res.redirect('/login')
+            return res.render('login')
         }
-        else{ 
+        else{
             return res.render('product-edit')
         }
     },
