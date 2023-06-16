@@ -46,40 +46,55 @@ let productController = {
         })
     },
     editLogueado: function (req,res) {
-
+        
         let errors = {}
         if (req.session.user == undefined) {
-            errors.message = 'Debes ingresar para editar tu producto'
-            res.locals.errors = errors
-            return res.render('login')
-        }
-        else{
-            let id = req.params.id; 
-
-            db.Producto.findByPk(id)
-            .then(function (producto) {
-                return res.send(producto)
-                // if (req.session.user.id != producto.user_id) {
-                //     return res.redirect (`/profile/id/${req.session.user.id}`)
-                // }
-                // else{
-                //     return res.render('product-edit', {info_producto: producto})
-                // }
+                errors.message = 'Debes ingresar para editar tu producto'
+                res.locals.errors = errors
+                return res.render('login')
             }
+
+        
+        let id_producto = req.params.id;
+        db.Producto.findByPk(id_producto,{include:[{association:"usuario"}]})
+            .then(function (producto) 
+            {   
+                return res.render('product-edit', {info_producto: producto})
+
+                // 
+                // else if (req.session.user.email == producto.usuario.email) {
+                //     return res.redirect (`/profile/id/${producto.usuario.id}`)
+                // }
+                // else{ 
+                // return res.render('product-edit', {info_producto: producto})
+
+                // }            CHEQUEAR CON ALE SOBRE PORQUE NO ME DEJA USAR DATOS NO STRINGS
+            } 
             )
             .catch(function (e) {
                 console.log(e);
             })
-
-
-
-
-
-            return res.render('product-edit')
-        }
+        
     },
     edit: function (req,res) {
-        
+        let formulario = req.body
+        let producto_editado= {
+            imagenes : formulario.imagen, 
+            nombre_producto : formulario.productNom, 
+            descripcion : formulario.descript,
+            descripcion_corta : formulario.descript_brief,
+        }
+        db.Producto.update({
+            imagenes : formulario.imagen, 
+            nombre_producto : formulario.productNom, 
+            descripcion : formulario.descript,
+            descripcion_corta : formulario.descript_brief
+        },{where:{id:formulario.producto_id}})
+        .then(
+            res.redirect(`/profile/id/${req.session.user.id}`))
+        .catch(function(e){
+            console.log(e)
+        })
     }
 
 }

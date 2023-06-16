@@ -11,7 +11,7 @@ router.post('/add', productController.add);
 
 router.get('/edit/:id',productController.editLogueado)
 
-router.post('/edit',productController.edit)
+router.post('/enviarCambios',productController.edit)
 
 
 module.exports = router;

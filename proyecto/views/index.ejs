@@ -57,13 +57,13 @@
 								<p><%=productos[i].descripcion_corta %></p>
 							</article>
 						</a>
-						<% if (locals.user != undefined) { %>
+						
 							<a href='/profile/id/<%=productos[i].user_id %>'>
 								<article class="product-box_data">
 									<p><%=productos[i].usuario.email %></p>
 								</article>
 							</a>
-						<%} %>
+						
 					</section>	
 				</div>
 				
