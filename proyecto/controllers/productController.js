@@ -95,7 +95,55 @@ let productController = {
         .catch(function(e){
             console.log(e)
         })
+    }, 
+
+    borrar: function (req, res) {
+        
     }
 
+    ,
+    comentarios: function (req, res) { 
+
+        let id = req.params.id
+        let errors = {}
+
+        let comentario_user = {
+            productos_id : id, 
+            user_id : req.session.user.id, 
+            comentario : req.body.comentario
+        }
+        if (req.session.user != undefined){
+            db.Producto.findByPk(id,{
+                include:[
+                    {association:"usuario"},
+                    {association: "los_comentarios", include:[{association:"el_usuario"}],limit : 6, }], 
+                    order: [
+                        ['createdAt', 'DESC']
+                    ],
+              })
+            .then(function(productos){
+                console.log(productos);
+                return res.render('product', {productos: productos});
+            })
+            .catch( function(er){
+                console.log(er);
+            })
+            if (req.body.comentario == ""){
+                errors.message = "No se puede enviar un comentario vacio!"
+                res.locals.errors = errors;
+                return res.render('product')
+            } 
+            else{
+                db.Comentario.create(comentario_user)
+                return res.redirect(`/product/id/${req.body.id}`)
+            };
+        } 
+        else{
+            errors.message = "Para realizas un comentario deber iniciar sesion primero!"
+            res.locals.errors = errors; 
+            res.render ('login')
+        }
+     }
 }
+
 module.exports = productController

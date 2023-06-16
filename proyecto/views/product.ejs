@@ -62,10 +62,13 @@
 							</article>
 						</section>
 						<% } %>
-					<form class="form" action="/product" method="get">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+					<form class="form" action='/product/comentarios/<%= productos.id %>' method="POST">
+						<input class="form-input" type="text" value="" name="comentario" placeholder="AGREGAR COMENTARIO">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
+					<% if (locals.errors) {%>
+						<p class = "error"> <%= errors.mensaje %> </p>
+					<% } %>
 					<hr>
 				</div>
 			</div>

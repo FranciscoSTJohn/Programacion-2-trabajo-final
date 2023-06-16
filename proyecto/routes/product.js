@@ -13,5 +13,8 @@ router.get('/edit/:id',productController.editLogueado)
 
 router.post('/enviarCambios',productController.edit)
 
+router.post('/comentarios/:id', productController.comentarios)
+
+
 
 module.exports = router;
