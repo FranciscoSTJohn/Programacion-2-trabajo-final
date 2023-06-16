@@ -22,37 +22,49 @@
 	<!-- Header -->
 	<%- include('./partials/headerLogueado.ejs') %>
 	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Editar mi producto</h2> <div> <button type="submit"> Volver al inicio </button> </div>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> 
-				<form action="/product/enviarCambios" method="POST">
-					<div>
-							<label for="Imagen">Imagen: </label>
-							<input id = "Imagen" type="text" name="imagen" value ="<%=info_producto.imagenes %>">
-							<br><br>
-
-							<label for="producto">Nombre Producto: </label>
-							<input id='producto' type="text" name="productNom" value = "<%= info_producto.nombre_producto %>">
-							<br><br>
-
-							<label for="descripción">Descripcion</label>
-							<input id = "descripción" type="text" name="descript" value="<%=info_producto.descripcion  %>">
-							<br><br>
-
-							<label for="descripción">Descripcion breve: </label>
-							<input id = "descripción" type="text" name="descript_brief" value="<%=info_producto.descripcion_corta  %>">
-							<br><br>
-							<input id = "id" type="hidden" name="producto_id" value="<%=info_producto.id  %>">
+	<% if (info_producto.user_id == locals.user.id){%>
+		<div class="container products-wrapper">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="products-title">Editar mi producto</h2>
+					<div> 
+						<a href="/">
+							<button type="submit"> Volver al inicio </button>
+						</a>
 					</div>
-				<div>
-					<button type="submit"> Editar </button>
 				</div>
-				</form>
-			</h2>
+				<!-- Show the "ultimos" products -->
+				<h2 class="col-12"> 
+					<form action="/product/enviarCambios" method="POST">
+						<div>
+								<label for="Imagen">Imagen: </label>
+								<input id = "Imagen" type="text" name="imagen" value ="<%=info_producto.imagenes %>">
+								<br><br>
+
+								<label for="producto">Nombre Producto: </label>
+								<input id='producto' type="text" name="productNom" value = "<%= info_producto.nombre_producto %>">
+								<br><br>
+
+								<label for="descripción">Descripcion</label>
+								<input id = "descripción" type="text" name="descript" value="<%=info_producto.descripcion  %>">
+								<br><br>
+
+								<label for="descripción">Descripcion breve: </label>
+								<input id = "descripción" type="text" name="descript_brief" value="<%=info_producto.descripcion_corta  %>">
+								<br><br>
+								<input id = "id" type="hidden" name="producto_id" value="<%=info_producto.id  %>">
+						</div>
+					<div>
+						<button type="submit"> Editar </button>
+					</div>
+					</form>
+				</h2>
+			<% } %>
+			<% if (info_producto.user_id != locals.user.id) {%>
+				<h2 class="products-title">Este producto no es tuyo, por lo tanto no puedes editarlo</h2>
+				<a href="/"><button>Volver al inicio</button></a>
+			<% } %>
+
 
 
 	<!-- footer -->

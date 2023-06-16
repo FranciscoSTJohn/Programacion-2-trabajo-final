@@ -1,5 +1,4 @@
 let db = require('../database/models');
-const { Edit } = require('./profileController');
 
 
 
@@ -12,6 +11,7 @@ let productController = {
                 {association: "los_comentarios", include:[{association:"el_usuario"}],limit : 6, } //order:['createdAt','DESC'] chequear porque no me dej hacerlos descendentes
         ]})
             .then(function(productos){
+                console.log(productos)
                 return res.render('product', {productos: productos})
             })
             .catch( function(error){
@@ -78,12 +78,6 @@ let productController = {
     },
     edit: function (req,res) {
         let formulario = req.body
-        let producto_editado= {
-            imagenes : formulario.imagen, 
-            nombre_producto : formulario.productNom, 
-            descripcion : formulario.descript,
-            descripcion_corta : formulario.descript_brief,
-        }
         db.Producto.update({
             imagenes : formulario.imagen, 
             nombre_producto : formulario.productNom, 
@@ -97,11 +91,39 @@ let productController = {
         })
     }, 
 
-    borrar: function (req, res) {
+    borrarLogueado: function (req, res) {
+        let errors = {}
         
-    }
-
-    ,
+        if (req.session.user == undefined){
+                errors.message = "Debes ingresar a tu cuenta para borrrar un producto"
+                res.locals.errors = errors;
+                return res.render('login')
+        }
+        else{
+            let id = req.params.id
+            db.Producto.findByPk(id,{
+                include: [
+                    {association: "usuario"},{association: "los_comentarios", include: [{association: "el_usuario"}]
+                } ]
+              })
+            .then(function(producto_borrar){
+                if (req.session.user.id == producto_borrar.user_id){
+                    return res.render('product-borrado',{producto_borrar})
+                }})
+            .catch(function(e){
+                console.log(e);
+            })
+        }
+    },
+    borrarDefinitivo: function (req,res) {
+        db.Producto.destroy({
+            where: {id: req.body.id_producto}
+        })
+        .then( res.redirect("/"))
+            .catch(function(e){
+                console.log(e);
+            })
+    },
     comentarios: function (req, res) { 
 
         let id = req.params.id
@@ -135,7 +157,13 @@ let productController = {
             } 
             else{
                 db.Comentario.create(comentario_user)
-                return res.redirect(`/product/id/${req.body.id}`)
+                .then(function(productos){
+
+                    return res.redirect(`/product/id/${req.params.id}`)
+                })
+                .catch( function(er){
+                    console.log(er);
+                })
             };
         } 
         else{

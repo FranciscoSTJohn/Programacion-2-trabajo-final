@@ -37,9 +37,16 @@
 		<% if (locals.user && locals.user.id == productos.user_id) { %>
 			<p class="product-detail-description">
 				<a href="/product/edit/<%= productos.id%>">Editar</a>
+				<a href="/product/borrar/<%= productos.id%>">Borrar producto</a>
 			</p>
 		<% } %>
 		</div>
+		<a href='/profile/id/<%=productos.user_id %>'>
+			<article>
+				<h2>Creado por <%=productos.usuario.email %></h2>
+			</article>
+		</a>
+		
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
@@ -67,7 +74,7 @@
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
 					<% if (locals.errors) {%>
-						<p class = "error"> <%= errors.mensaje %> </p>
+						<p class = "error"> <%= errors.message %> </p>
 					<% } %>
 					<hr>
 				</div>

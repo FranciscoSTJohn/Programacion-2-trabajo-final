@@ -15,6 +15,10 @@ router.post('/enviarCambios',productController.edit)
 
 router.post('/comentarios/:id', productController.comentarios)
 
+router.get('/borrar/:id', productController.borrarLogueado);
+
+router.post('/borrado', productController.borrarDefinitivo);
+
 
 
 module.exports = router;

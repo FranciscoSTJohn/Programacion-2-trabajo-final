@@ -10,11 +10,12 @@
 			<!-- Font Awesome Stylesheet -->
 			<link rel="preconnect" href="https://fonts.googleapis.com">
 			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-			<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-				<!-- Bootstrap Grid Stylesheet -->
+			<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">	
+	<!-- Bootstrap Grid Stylesheet -->
 	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
 	<!-- Own Stylesheet -->
 	<link rel="stylesheet" href="/stylesheets/app.css">
+
 </head>
 <body>
 	<!-- Header -->
@@ -27,64 +28,25 @@
 		
 		<%-include('./partials/headernologueado')%> 
 
-	<% } %>	<!-- /Header -->
+	<% } %>
+	
+	<!-- /Header -->
+    <div class="container products-wrapper"> 
+        <div class="row">
+                    <div class="col-12">
+                        <h2 class="products-title" >Borrar productos</h2>
+                        <h2>Seguro que quiere borrarlo, no hay vuelta atras </h2>
+                    </div>
 
-	<!-- Datos del usuario -->
-	<section class="info-usuario container products-wrapper">
-		<div class="row">
-			<div class="img-container offset-3 col-2">
-				<img src="https://via.placeholder.com/150" alt="foto de perfil" class="foto-perfil">
-			</div>
-			<div class="data-container col-6">
-				<div class="d-flex align-items-center ">
-					<h1 class="main-title"><%= perfiles.email %>
-						<% if (perfiles.id == locals.user.id){%>
-							<a href="/profile/edit/<%= user.id%>">
-							<i class="fas fa-cog"></i>
-						</a>
-						<% } %>
-					</h1>
-					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
-				</div> 
-				<div>
-					<ul class="">
-						<li>8 productos</li>
-						<li>200 seguidores</li>
-						<li>300 comentarios</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- /Datos del usuario -->
+                <form action="/product/borrado" method="post">
+                    <input type="hidden" name="id_producto" value="<%= producto_borrar.id %>" >
+                    <button type="submit">Borrar</button>
 
-	<!-- Mis productos -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Mis productos</h2>
-			</div>
-			<!-- Show mis productos -->
-			<% for (let i = 0; i < perfiles.los_productos.length ; i++) { %>
-				<div class="col-12 col-sm-6 col-lg-3">
-					<section class="product-box">
-						<a href='/product/id/<%=perfiles.los_productos[i].id%>'>
-							<figure class="product-box_image">
-								<img src="/<%=perfiles.los_productos[i].imagenes %>" alt="Imagen del producto">
-							</figure>
-							<article class="product-box_data">
-								<h2><%=perfiles.los_productos[i].nombre_producto%></h2>
-								<p><%=perfiles.los_productos[i].descripcion_corta %></p>							</article>
-						</a>
-					</section>	
-				</div>
-				
-			<% } %>
-		</div>
-	</div>
-	<!-- /Mis productos -->
+                </form>
 
-
+                <a href="/"><button type="submit">Volver al inicio</button></a>
+        </div>
+    </div>
 	<!-- footer -->
 	<footer class="main-footer">
 		<div class="container">

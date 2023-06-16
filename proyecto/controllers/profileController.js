@@ -13,9 +13,42 @@ let profileController = {
                 console.log(error);
             })
     },
-    Edit: function(req, res){
+    editLogeado: function(req, res){
+        let errors = {}
+        if (req.session.user == undefined) {
+                errors.message = 'Debes ingresar para editar tu usuario'
+                res.locals.errors = errors
+                return res.render('login')
+            }
+
         
-        return res.render('profile-edit')
+        let id_user = req.params.id;
+        db.User.findByPk(id_user)
+            .then(function (user) 
+            {   
+                return res.render('profile-edit', {info_user: user})
+            } 
+            )
+            .catch(function (e) {
+                console.log(e);
+            })
     },
+    edit: function (req,res) {
+        let formulario = req.body
+        let perfil_editado= {
+            email : formulario.mail, 
+            nombreUsuario : formulario.user, 
+            fecha : formulario.fecha,
+            DNI : formulario.DNI
+        }
+        db.User.update(perfil_editado,{where:{id:formulario.user_id}})
+        .then(function(perfil){
+            return res.send(perfil)
+        }
+        )
+        .catch(function(e){
+            console.log(e)
+        })
+    }
 }
 module.exports = profileController
