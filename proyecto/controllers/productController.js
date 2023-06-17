@@ -129,7 +129,7 @@ let productController = {
         let errors = {}
 
         let comentario_user = {
-            productos_id : req.body.id_producto, 
+            productos_id : id, 
             user_id : req.session.user.id, 
             comentario : req.body.comentario
         }
@@ -158,7 +158,7 @@ let productController = {
             else{
                 db.Comentario.create(comentario_user)
                 .then(function(coments){
-                    return res.redirect(`/product/id/${req.body.id_producto}`)
+                    return res.redirect(`/product/id/${comentario_user.productos_id}`)
                 })
                 .catch( function(er){
                     console.log(er);
