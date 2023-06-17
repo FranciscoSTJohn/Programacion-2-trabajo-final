@@ -72,6 +72,7 @@
 					<form class="form" action='/product/comentarios/<%= productos.id %>' method="POST">
 						<input class="form-input" type="text" value="" name="comentario" placeholder="AGREGAR COMENTARIO">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+						<input type="hidden" name="id_producto" value="<%= productos.id %>" >
 					</form>
 					<% if (locals.errors) {%>
 						<p class = "error"> <%= errors.message %> </p>

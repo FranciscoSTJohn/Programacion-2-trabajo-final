@@ -125,41 +125,40 @@ let productController = {
             })
     },
     comentarios: function (req, res) { 
-
         let id = req.params.id
         let errors = {}
 
         let comentario_user = {
-            productos_id : id, 
+            productos_id : req.body.id_producto, 
             user_id : req.session.user.id, 
             comentario : req.body.comentario
         }
         if (req.session.user != undefined){
-            db.Producto.findByPk(id,{
-                include:[
-                    {association:"usuario"},
-                    {association: "los_comentarios", include:[{association:"el_usuario"}],limit : 6, }], 
-                    order: [
-                        ['createdAt', 'DESC']
-                    ],
-              })
-            .then(function(productos){
-                console.log(productos);
-                return res.render('product', {productos: productos});
-            })
-            .catch( function(er){
-                console.log(er);
-            })
             if (req.body.comentario == ""){
                 errors.message = "No se puede enviar un comentario vacio!"
                 res.locals.errors = errors;
-                return res.render('product')
+                
+                db.Producto.findByPk(id,{
+                    include:[
+                        {association:"usuario"},
+                        {association: "los_comentarios", include:[{association:"el_usuario"}]}], 
+                        order: [
+                            ['createdAt', 'DESC']
+                        ],
+                  })
+                .then(function(productos){
+                    console.log(productos);
+                    return res.render('product', {productos: productos});
+                })
+                .catch( function(er){
+                    console.log(er);
+                })
+    
             } 
             else{
                 db.Comentario.create(comentario_user)
-                .then(function(productos){
-
-                    return res.redirect(`/product/id/${req.params.id}`)
+                .then(function(coments){
+                    return res.redirect(`/product/id/${req.body.id_producto}`)
                 })
                 .catch( function(er){
                     console.log(er);
