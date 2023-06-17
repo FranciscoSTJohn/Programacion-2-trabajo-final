@@ -35,15 +35,15 @@ let profileController = {
     },
     edit: function (req,res) {
         let formulario = req.body
-        let perfil_editado= {
+         
+        db.User.update({
             email : formulario.mail, 
             nombreUsuario : formulario.user, 
             fecha : formulario.fecha,
             DNI : formulario.DNI
-        }
-        db.User.update(perfil_editado,{where:{id:formulario.user_id}})
+        },{where:{id:formulario.user_id}})
         .then(function(perfil){
-            return res.send(perfil)
+            res.redirect(`/profile/id/${req.session.user.id}`)
         }
         )
         .catch(function(e){

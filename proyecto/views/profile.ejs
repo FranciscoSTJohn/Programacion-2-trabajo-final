@@ -38,10 +38,12 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title"><%= perfiles.email %>
-						<% if (perfiles.id == locals.user.id){%>
+						
+						<% if (locals.user!= undefined){%>
+							<% if(locals.user.id == perfiles.id) {%>
 							<a href="/profile/edit/<%= user.id%>">
-							<i class="fas fa-cog"></i>
-						</a>
+							<i class="fas fa-cog"></i></a>
+							<% } %>
 						<% } %>
 					</h1>
 					<a class="btn mt-3 ml-4" href="">SEGUIR</a>

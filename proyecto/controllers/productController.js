@@ -60,15 +60,6 @@ let productController = {
             .then(function (producto) 
             {   
                 return res.render('product-edit', {info_producto: producto})
-
-                // 
-                // else if (req.session.user.email == producto.usuario.email) {
-                //     return res.redirect (`/profile/id/${producto.usuario.id}`)
-                // }
-                // else{ 
-                // return res.render('product-edit', {info_producto: producto})
-
-                // }            CHEQUEAR CON ALE SOBRE PORQUE NO ME DEJA USAR DATOS NO STRINGS
             } 
             )
             .catch(function (e) {
@@ -128,12 +119,12 @@ let productController = {
         let id = req.params.id
         let errors = {}
 
-        let comentario_user = {
-            productos_id : id, 
-            user_id : req.session.user.id, 
-            comentario : req.body.comentario
-        }
         if (req.session.user != undefined){
+            let comentario_user = {
+                productos_id : id, 
+                user_id : req.session.user.id, 
+                comentario : req.body.comentario
+            }
             if (req.body.comentario == ""){
                 errors.message = "No se puede enviar un comentario vacio!"
                 res.locals.errors = errors;
@@ -168,7 +159,7 @@ let productController = {
         else{
             errors.message = "Para realizas un comentario deber iniciar sesion primero!"
             res.locals.errors = errors; 
-            res.render ('login')
+            return res.render('login')
         }
      }
 }
